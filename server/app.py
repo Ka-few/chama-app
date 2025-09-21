@@ -133,4 +133,20 @@ class ContributionResource(Resource):
         db.session.commit()
         return '', 204
 
+
+api.add_resource(ChamaListResource, '/api/chamas')
+api.add_resource(ChamaResource, '/api/chamas/<int:chama_id>')
+api.add_resource(MemberListResource, '/api/members')
+api.add_resource(MemberResource, '/api/members/<int:member_id>')
+api.add_resource(JoinChamaResource, '/api/members/<int:member_id>/join/<int:chama_id>')
+api.add_resource(ContributionListResource, '/api/contributions')
+api.add_resource(ContributionResource, '/api/contributions/<int:contrib_id>')
+
+@app.route('/')
+def home():
+    return {'msg': 'Chama backend running with Alembic + SerializerMixin'}
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 		# You may want to add logic to create and save a Contribution here
